@@ -74,16 +74,12 @@ img{max-width:100%;display:block;}
   display:flex;align-items:center;gap:12px;text-decoration:none;
 }
 .brand-mark{
-  width:42px;height:42px;
-  background:var(--rust);
-  border-radius:50%;
-  display:grid;place-items:center;
-  color:var(--peach);
-  font-family:'Fraunces',serif;
-  font-style:italic;font-weight:700;font-size:22px;
-  transition:transform .3s ease;
+  width:46px;height:46px;
+  object-fit:contain;
+  display:block;
+  transition:transform .35s cubic-bezier(.2,.7,.3,1);
 }
-.brand:hover .brand-mark{transform:rotate(-8deg) scale(1.05);}
+.brand:hover .brand-mark{transform:rotate(-10deg) scale(1.06);}
 .brand-text{
   font-family:'Fraunces',serif;
   font-size:22px;font-weight:500;
@@ -948,6 +944,9 @@ img{max-width:100%;display:block;}
   user-select:none;
 }
 .faq-item summary::-webkit-details-marker{display:none;}
+.faq-item summary::marker{content:'';display:none;}
+.faq-item{list-style:none;}
+.faq-item > summary{list-style:none;}
 .faq-item summary::after{
   content:'+';
   width:30px;height:30px;border-radius:50%;
@@ -1123,7 +1122,7 @@ section[id]{scroll-margin-top:80px;}
 <nav class="nav" id="mainNav">
   <div class="nav-inner">
     <a href="#home" class="brand">
-      <span class="brand-mark">L</span>
+      <img src="assets/LIBRA PITTOGRAMMA PNG_Tavola disegno 1.png" alt="Libra Terra Creativa" class="brand-mark">
       <span class="brand-text">Libra<em> Terra Creativa</em></span>
     </a>
     <div class="nav-menu">
