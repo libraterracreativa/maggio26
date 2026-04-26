@@ -60,9 +60,9 @@ img{max-width:100%;display:block;}
   transition:all .35s ease;
 }
 .nav.scrolled{
-  background:rgba(244,208,188,0.92);
-  backdrop-filter:blur(18px);
-  -webkit-backdrop-filter:blur(18px);
+  background:rgba(244,208,188,0.97);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
   padding:12px 0;
   border-bottom:1px solid rgba(46,34,24,0.08);
 }
@@ -126,7 +126,7 @@ img{max-width:100%;display:block;}
 
 /* ============ HERO ============ */
 .hero{
-  min-height:100dvh;
+  min-height:100vh;
   padding:120px 28px 60px;
   position:relative;overflow:hidden;
   display:flex;align-items:center;
@@ -682,6 +682,8 @@ img{max-width:100%;display:block;}
   display:flex;gap:7px;margin-top:18px;
   overflow-x:auto;padding-bottom:6px;
   scrollbar-width:thin;scrollbar-color:rgba(200,72,58,0.4) transparent;
+  overscroll-behavior:contain;
+  -webkit-overflow-scrolling:touch;
 }
 .thumb-strip::-webkit-scrollbar{height:3px;}
 .thumb-strip::-webkit-scrollbar-thumb{background:rgba(200,72,58,0.5);border-radius:2px;}
@@ -1064,9 +1066,9 @@ img{max-width:100%;display:block;}
   display:none;
   position:fixed;bottom:0;left:0;right:0;z-index:997;
   padding:14px 16px;
-  background:rgba(244,208,188,0.96);
-  backdrop-filter:blur(14px);
+  background:var(--peach);
   border-top:1px solid var(--line);
+  box-shadow:0 -6px 20px rgba(46,34,24,0.10);
 }
 .mobile-cta a{
   display:flex;align-items:center;justify-content:center;gap:10px;
@@ -1109,8 +1111,14 @@ img{max-width:100%;display:block;}
 }
 
 /* Smooth section reveal */
-.reveal{opacity:0;transform:translateY(20px);transition:all .8s cubic-bezier(.2,.7,.3,1);}
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .6s cubic-bezier(.2,.7,.3,1), transform .6s cubic-bezier(.2,.7,.3,1);}
 .reveal.in{opacity:1;transform:translateY(0);}
+
+/* Su mobile e per prefers-reduced-motion: niente animazioni di entrata
+   (causano jank durante lo scroll su iOS Safari). */
+@media (max-width: 768px), (prefers-reduced-motion: reduce){
+  .reveal{opacity:1 !important;transform:none !important;transition:none !important;}
+}
 
 /* Scroll margin for anchored sections (compensates fixed nav) */
 section[id]{scroll-margin-top:80px;}
@@ -1766,6 +1774,77 @@ section[id]{scroll-margin-top:80px;}
 
 <!-- ============ FAQ ============ -->
 <section class="faq-section" id="faq">
+  <div class="faq-inner">
+    <div class="section-head" style="margin-bottom:0;">
+      <div class="section-head-text">
+        <span class="section-label">Domande frequenti</span>
+        <h2 class="section-title">Quello che <em>chiedono</em><br>più spesso</h2>
+      </div>
+      <p class="section-sub">Se non trovi la risposta qui sotto, scrivici su WhatsApp: di norma rispondiamo nel giro di poche ore.</p>
+    </div>
+
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>
+          <span>Posso venire da solo o da sola?</span>
+          <span class="faq-icon">+</span>
+        </summary>
+        <div class="faq-answer">Certamente, anzi: la maggior parte delle persone arriva proprio così. Lo spazio e l'atmosfera sono pensati per facilitare l'incontro, e ci prendiamo cura di accoglierti dal primo momento.</div>
+      </details>
+
+      <details class="faq-item">
+        <summary>
+          <span>Serve esperienza per partecipare?</span>
+          <span class="faq-icon">+</span>
+        </summary>
+        <div class="faq-answer">No. Tutti gli eventi sono aperti anche a chi parte da zero. Se hai dubbi su un'attività specifica, scrivici su WhatsApp e ti orientiamo verso quella più adatta a te.</div>
+      </details>
+
+      <details class="faq-item">
+        <summary>
+          <span>Cosa devo portare?</span>
+          <span class="faq-icon">+</span>
+        </summary>
+        <div class="faq-answer">Di base nulla. Per la maggior parte delle attività bastano abiti comodi e voglia di esserci. Se un evento richiede qualcosa di specifico, te lo segnaliamo al momento della prenotazione.</div>
+      </details>
+
+      <details class="faq-item">
+        <summary>
+          <span>Come arrivo a Libra? C'è parcheggio?</span>
+          <span class="faq-icon">+</span>
+        </summary>
+        <div class="faq-answer">Siamo in Via Santa Maria 33, in pieno centro a Pietrasanta. Hai a disposizione 10 posti auto direttamente allo spazio. Se sono occupati, il parcheggio dei Carabinieri di Pietrasanta è a circa 10 minuti a piedi.</div>
+      </details>
+
+      <details class="faq-item">
+        <summary>
+          <span>Come si paga?</span>
+          <span class="faq-icon">+</span>
+        </summary>
+        <div class="faq-answer">Direttamente in loco, al momento dell'attività. Per confermare la prenotazione non serve alcun pagamento anticipato.</div>
+      </details>
+
+      <details class="faq-item">
+        <summary>
+          <span>Posso disdire? Con quanto preavviso?</span>
+          <span class="faq-icon">+</span>
+        </summary>
+        <div class="faq-answer">Sì. Ti chiediamo solo un preavviso minimo di 24 ore, così possiamo liberare il posto per chi è in lista d'attesa.</div>
+      </details>
+
+      <details class="faq-item">
+        <summary>
+          <span>Avete attenzione per intolleranze e allergie?</span>
+          <span class="faq-icon">+</span>
+        </summary>
+        <div class="faq-answer">Veniamo incontro a qualsiasi esigenza. Comunicaci allergie, intolleranze o necessità particolari quando prenoti e adatteremo l'esperienza per te.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="faq-section" id="faq">
   <div class="section-head" style="max-width:1100px;margin:0 auto 0;">
     <div class="section-head-text">
       <span class="section-label">Prima di prenotare · Domande frequenti</span>
@@ -2045,10 +2124,16 @@ function updateNavButtons(){
   if (n) n.disabled = isTwoPage() ? (currentPage+2 >= pages.length) : (currentPage+1 >= pages.length);
 }
 function updateThumbs(){
+  var strip = document.getElementById('thumbStrip');
   document.querySelectorAll('.thumb').forEach(function(t,i){
     var active = isTwoPage() ? (i === currentPage || i === currentPage+1) : i === currentPage;
     t.classList.toggle('active', active);
-    if (active && i === currentPage) t.scrollIntoView({behavior:'smooth', block:'nearest', inline:'center'});
+    /* Scroll del solo container orizzontale, NON della pagina.
+       scrollIntoView su mobile faceva risalire il viewport. */
+    if (active && i === currentPage && strip){
+      var target = t.offsetLeft - strip.clientWidth/2 + t.clientWidth/2;
+      strip.scrollTo({left: target, behavior: 'smooth'});
+    }
   });
 }
 function buildThumbs(){
